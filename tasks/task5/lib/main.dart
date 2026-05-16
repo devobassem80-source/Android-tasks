@@ -1,138 +1,131 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const SimpleUiApp());
+  runApp(const DesignApp());
 }
 
-class SimpleUiApp extends StatelessWidget {
-  const SimpleUiApp({super.key});
+class DesignApp extends StatelessWidget {
+  const DesignApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "UI Demo",
+      title: "Simple Screen",
       theme: ThemeData(fontFamily: "Arial"),
-      home: const DashboardScreen(),
+      home: const LoginView(),
     );
   }
 }
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF4F1EA),
+      backgroundColor: const Color(0xffF8F5F2),
 
       appBar: AppBar(
-        title: const Text("Creative Login"),
+        title: const Text("User Interface"),
         centerTitle: true,
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.indigo,
       ),
 
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.indigo,
         onPressed: () {},
-        child: const Icon(Icons.favorite),
+        child: const Icon(Icons.notifications),
       ),
 
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 50),
-
-                Container(
-                  height: 150,
-                  width: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    image: const DecorationImage(
-                      image: AssetImage("assets/images/1.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        offset: Offset(2, 5),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 30),
-
-                const Text(
-                  "Welcome Back",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-
-                const SizedBox(height: 12),
-
-                const Icon(Icons.light_mode, color: Colors.orange, size: 36),
-
-                const SizedBox(height: 40),
-
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(22),
-                    border: Border.all(color: Colors.orange.shade100),
-                  ),
-                  child: Column(
-                    children: const [
-                      InputItem(
-                        label: "Email Address",
-                        icon: Icons.email_outlined,
-                        isPassword: false,
-                      ),
-
-                      SizedBox(height: 18),
-
-                      InputItem(
-                        label: "Enter Password",
-                        icon: Icons.key,
-                        isPassword: true,
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 35),
-
-                SizedBox(
-                  width: double.infinity,
-                  height: 55,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                    ),
-                    child: const Text(
-                      "Login Now",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 12,
+                          offset: Offset(3, 5),
+                        ),
+                      ],
+                      image: const DecorationImage(
+                        image: AssetImage("assets/images/1.jpg"),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
 
-                const SizedBox(height: 25),
-              ],
+                  const SizedBox(height: 30),
+
+                  const Text(
+                    "Explore Flutter",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  const Icon(Icons.favorite, color: Colors.indigo, size: 35),
+
+                  const SizedBox(height: 40),
+
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      children: const [
+                        CustomInput(
+                          title: "Email",
+                          icon: Icons.mail_outline,
+                          secure: false,
+                        ),
+
+                        SizedBox(height: 18),
+
+                        CustomInput(
+                          title: "Password",
+                          icon: Icons.lock,
+                          secure: true,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 35),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.indigo,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      child: const Text(
+                        "Sign In",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -141,35 +134,30 @@ class DashboardScreen extends StatelessWidget {
   }
 }
 
-class InputItem extends StatelessWidget {
-  final String label;
+class CustomInput extends StatelessWidget {
+  final String title;
   final IconData icon;
-  final bool isPassword;
+  final bool secure;
 
-  const InputItem({
+  const CustomInput({
     super.key,
-    required this.label,
+    required this.title,
     required this.icon,
-    required this.isPassword,
+    required this.secure,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      obscureText: isPassword,
+      obscureText: secure,
       decoration: InputDecoration(
-        hintText: label,
-        prefixIcon: Icon(icon, color: Colors.deepOrange),
+        hintText: title,
+        prefixIcon: Icon(icon, color: Colors.indigo),
         filled: true,
-        fillColor: const Color(0xffFAFAFA),
-        contentPadding: const EdgeInsets.symmetric(vertical: 18),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.orange.shade100),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Colors.deepOrange, width: 1.5),
+        fillColor: const Color(0xffF3F3F3),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
         ),
       ),
     );

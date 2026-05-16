@@ -1,7 +1,7 @@
 class Person {
   String name;
   int _age;
-  static String universityName = "Sohag ";
+  static String universityName = "Asuet";
 
   Person(this.name, this._age);
 
@@ -30,16 +30,16 @@ class Developer extends Employee implements Skills {
   Developer(String name, int age, double salary) : super(name, age, salary);
 
   void goodskill() {
-    print("good skill: front,ui/ux developer");
+    print("good skill: UI/UX developer");
   }
 
   void badskill() {
-    print("bad skill: ai");
+    print("bad skill: communication");
   }
 }
 
 void main() {
-  var d = Developer("David", 22, 5000);
+  var d = Developer("Mohamed Hazem", 21, 12000);
 
   print("University: ${Person.universityName}");
   d.showInfo();
