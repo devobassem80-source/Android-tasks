@@ -30,7 +30,7 @@ class Developer extends Employee implements Skills {
   Developer(String name, int age, double salary) : super(name, age, salary);
 
   void goodskill() {
-    print("good skill: UI/UX developer");
+    print("good skill: Front-end , UI/UX developer");
   }
 
   void badskill() {
@@ -39,7 +39,7 @@ class Developer extends Employee implements Skills {
 }
 
 void main() {
-  var d = Developer("Mohamed Hazem", 21, 12000);
+  var d = Developer("David", 22, 18000);
 
   print("University: ${Person.universityName}");
   d.showInfo();
