@@ -11,14 +11,14 @@ void main() {
     printStudents(list, i + 1);
   }
 
-  addStudent("Mohamed");
-  addStudent("Hazem");
+  addStudent("David");
+  addStudent("Bassem");
 
   students.forEach((e) => print(e));
 
   printStudents(students.toList(), 0);
 
-  Set<String> newStudents = {"Mohamed", "Hazem"};
+  Set<String> newStudents = {"David", "Bassem"};
   students = {...students, ...newStudents};
 
   Map<String, Map<String, double>> courses = {};
@@ -33,8 +33,8 @@ void main() {
     return g.reduce((a, b) => a + b) / g.length;
   }
 
-  addCourse("Mohamed", "engilsh", 85);
-  addCourse("Hazemm", "math", 95);
+  addCourse("David", "engilsh", 85);
+  addCourse("Bassem", "math", 95);
 
-  print(averageGrade("Mohamed"));
+  print(averageGrade("David"));
 }
